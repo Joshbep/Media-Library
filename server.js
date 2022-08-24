@@ -4,7 +4,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override');
 require('dotenv').config()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 const booksController = require('./controllers/booksController.js')
 const authorController = require('./controllers/authorController.js')
