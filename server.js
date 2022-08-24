@@ -3,18 +3,18 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override');
-const PORT = 3000
+require('dotenv').config()
+const PORT = process.env.PORT
+
+const booksController = require('./controllers/booksController.js')
 
 const mongoose = require('mongoose')
-const mongoURI = process.env.MONGODB_URI
+const mongoURI = process.env.MONGODV_URI
 mongoose.connect(mongoURI);
 mongoose.connection.once('open', () => {
   console.log('connected to mongo')
 })
 
-
-
-const booksController = require('./controllers/booksController.js')
 
 
 app.use(express.static('public'));
