@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const PORT = 3000
 // const PORT = process.env.PORT
 
-const booksController = require('./controllers/index.js')
+const booksController = require('./controllers/booksController.js')
 
 
 app.use(express.static('public'));
