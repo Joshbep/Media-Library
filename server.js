@@ -7,6 +7,7 @@ require('dotenv').config()
 const PORT = process.env.PORT
 
 const booksController = require('./controllers/booksController.js')
+const authorController = require('./controllers/authorController.js')
 
 const mongoose = require('mongoose')
 const mongoURI = process.env.MONGODV_URI
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
 app.use('/', booksController)
+app.use('/', authorController)
 
 app.listen(PORT, () => {
   console.log(`server listening at port ${PORT} ✨`)
