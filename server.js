@@ -10,7 +10,7 @@ const booksController = require('./controllers/booksController.js')
 const authorController = require('./controllers/authorController.js')
 
 const mongoose = require('mongoose')
-const mongoURI = process.env.MONGODV_URI
+const mongoURI = process.env.MONGODB_URI
 mongoose.connect(mongoURI);
 mongoose.connection.once('open', () => {
   console.log('connected to mongo')
@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
 app.use('/', booksController)
-app.use('/', authorController)
+app.use('/authors', authorController)
 
 app.listen(PORT, () => {
   console.log(`server listening at port ${PORT} ✨`)
