@@ -4,7 +4,15 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override');
 const PORT = 3000
-// const PORT = process.env.PORT
+
+const mongoose = require('mongoose')
+const mongoURI = process.env.MONGODB_URI
+mongoose.connect(mongoURI);
+mongoose.connection.once('open', () => {
+  console.log('connected to mongo')
+})
+
+
 
 const booksController = require('./controllers/booksController.js')
 
