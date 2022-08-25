@@ -2,9 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>The Home of Stories</title>
   </head>
   <body>
+    <header>
+        <a href="/">The Home of Stories</a>
+        <a href="/authors">Authors</a>
+        <a href="/authors/new">Add Author</a>
+    </header>
     <h1>all authors</h1>
+    <ul>
+      <% for(let i = 0; i < authors.length; i++) { %>
+        <li>
+          <a href="/authors/<%= authors[i] %>"> <%= author[i].name %> </a>
+        </li>
+    <% } %>
+    </ul>
   </body>
 </html>
