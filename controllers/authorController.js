@@ -4,8 +4,12 @@ const Author = require('../models/author.js')
 //pulling all authors
 
 router.get('/', async (req, res) => {
-  let authors = await Author.find({});
-  res.render('authors/index.ejs', {authors});
+  let searchOptions = {}
+  if (req.query.name != null && req.query.name !== '') {
+    searchOptions.name = new RegExp(req.query.name, 'i')
+  }
+  const authors = await Author.find(searchOptions);
+  res.render('authors/index.ejs', {authors: authors, searchOptions: req.query});
 })
 
 // router.get('/seed', (req, res) => {

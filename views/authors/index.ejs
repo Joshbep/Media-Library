@@ -10,7 +10,14 @@
         <a href="/authors">Authors</a>
         <a href="/authors/new">Add Author</a>
     </header>
-    <h1>all authors</h1>
+    <h2>Search Authors</h2>
+    <form action="/authors" method="GET">
+      <label for="name">Name</label>
+      <input type="text" name="name" value="<%=searchOptions.name%>">
+      <button type="submit" name="button">Search</button>
+    </form>
+    <br>
+  </body>
     <ul>
       <% for(let i = 0; i < authors.length; i++) { %>
         <li>
