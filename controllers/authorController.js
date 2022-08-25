@@ -5,7 +5,7 @@ const Author = require('../models/author.js')
 
 router.get('/', async (req, res) => {
   let authors = await Author.find({});
-  res.render('authors/index.ejs', {authors})
+  res.render('authors/index.ejs', {authors});
 })
 
 // router.get('/seed', (req, res) => {
@@ -34,7 +34,21 @@ router.get('/new', (req, res) => {
 
 //creating authors
 router.post('/', (req, res) => {
-  res.send('go go go create')
+	Author.create(req.body, (error, createdAuthor) => {
+		if (error) {
+			console.log('error', error);
+			res.send(error);
+		} else {
+			res.redirect('/authors');
+		}
+	});
+});
+
+// UPDATE
+router.put('/:id', (req, res) => {
+  Author.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateAuthor) => {
+    res.redirect('/authors')
+  })
 })
 
 module.exports = router
