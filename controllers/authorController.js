@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const Author = require('../models/author.js')
 //pulling all authors
 router.get('/', (req, res) => {
   res.render('authors/index.ejs')
