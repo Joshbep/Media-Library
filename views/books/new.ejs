@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>New Book</h2>
+    <form method="POST" action="/books" enctype='multipart/form-data'>
+      <fieldset>
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" placeholder="Enter new book name">
+      </fieldset>
+
+      <fieldset>
+        <label for="author">Author</label>
+        <select name="author">
+      <% authors.forEach(author => { %>
+        <% if (author.id === book.author) { %>
+          <option selected label="<%= author.name %>" value="<%= author.id %>">
+        <% } else { %>
+          <option label="<%= author.name %>" value="<%= author.id %>">
+        <% } %>
+      <% }) %>
+    </select>
+      </fieldset>
+
+      <fieldset>
+        <label for="publishDate">Publish Date:</label>
+        <input id="publishDate" type="date" name="publishDate" value=" <%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
+      </fieldset>
+
+      <fieldset>
+        <label for="pageCount">Page Count:</label>
+        <input id="pageCount" type="number" min="1" name="pageCount" placeholder="Enter page count" value=" <%= book.pageCount %>">
+      </fieldset>
+
+      <fieldset>
+        <label for="cover">cover:</label>
+        <input id="cover" type="file" name="cover">
+      </fieldset>
+
+      <fieldset>
+        <label for="description">Description:</label>
+        <textarea id="description" type="text" name="description" placeholder="Enter description" value=" <%= book.description %>"></textarea>
+      </fieldset>
+
+      <a href="/books">Cancel</a>
+      <button type="submit">Add Book</button>
+    </form>
+  </body>
+</html>
