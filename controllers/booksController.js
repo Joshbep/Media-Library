@@ -46,15 +46,17 @@ router.put('/:id', (req, res) => {
 
 })
 
-async function renderFormPage(res, book, form, hasError = false) {
-  const authors = await Author.find({})
-  const params = {authors: authors, book: book}
-  res.render(`books/${form}`, params)
-}
-
-// async function renderNewPage(res, book, hasError = false) {
-//   rendorFormPage(res, book, 'new', hasError)
+// async function renderFormPage(res, book, form, hasError = false) {
+//   const authors = await Author.find({})
+//   const params = {authors: authors, book: book}
+//   res.render(`books/${form}`, params)
 // }
+
+async function renderNewPage(res, book, hasError = false) {
+  const authors = await Author.find({})
+  const params = { authors: authors, book: book}
+  res.render('books/new.ejs', params)
+}
 
 
 module.exports = router
