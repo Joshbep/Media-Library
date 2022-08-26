@@ -17,6 +17,7 @@ app.use(session({
 	saveUninitialized: false
 }))
 
+const indexController = require('./controllers/index.js')
 const booksController = require('./controllers/booksController.js')
 const authorController = require('./controllers/authorController.js')
 
@@ -35,8 +36,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
-app.use('/', booksController)
+app.use('/', indexController)
 app.use('/authors', authorController)
+app.use('/books', booksController)
 
 app.listen(PORT, () => {
   console.log(`server listening at port ${PORT} ✨`)
