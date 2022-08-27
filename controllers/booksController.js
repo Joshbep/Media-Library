@@ -30,17 +30,29 @@ router.get('/new', async (req, res) => {
 })
 
 //creating book
-router.post('/', (req, res) => {
-  const book = Book.create(req.body, (error, createdBook) => {
-		if (error) {
-			console.log('error', error);
-			res.send(error);
-		} else {
-			res.redirect('/books');
-		}
-	});
+router.post('/', async (req, res) => {
+  const book = new Book({
+    title: req.body.title,
+    author: req.body.author,
+    publishDate: new Date(req.body.publishDate),
+    pageCount: req.body.pageCount,
+    description: req.body.description
+  })
   saveCover(book, req.body.cover)
-});
+
+  try {
+    const newBook = await book.save()
+    res.redirect(`books/${newBook.id}`)
+  } catch {
+    renderNewPage(res, book, true)
+  }
+})
+
+// show route for books
+router.get('/:id', async (req, res) => {
+  const book = await Book.findById(req.params.id).populate('author').exec()
+  res.render('books/show.ejs', {book: book})
+})
 
 // UPDATE
 router.put('/:id', (req, res) => {

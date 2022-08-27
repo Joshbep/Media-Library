@@ -1,9 +1,11 @@
 <%- include('./partials/header.ejs') %>
     <h2>Recently Added</h2>
-    <% for(let i = 0; i < books.length; i++) { %>
-        <a href="/books/<%= books[i].id %>"> <%= books[i].name %>
-          <img class="book-cover" src="<%= books.coverImagePath %>">
+    <div class="">
+    <% books.forEach(book => { %>
+        <a href="/books/<%= books.id %>">
+          <img class="book-cover" src="<%= book.coverImagePath %>">
         </a>
-  <% } %>
+    <% }) %>
+    </div>
   </body>
 </html>
