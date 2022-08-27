@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const Author = require('./models/author.js')
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser')
 const session = require('express-session')
 require('dotenv').config()
 const PORT = process.env.PORT || 3000
@@ -33,7 +34,7 @@ mongoose.connection.once('open', () => {
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 app.use(methodOverride('_method'))
 
 app.use('/', indexController)

@@ -37,6 +37,11 @@ router.get('/new', (req, res) => {
   res.render('authors/new.ejs')
 })
 
+// show route for author
+router.get('/:id', (req, res) => {
+  res.send('id of author' + req.params.id)
+})
+
 //creating authors
 router.post('/', (req, res) => {
 	Author.create(req.body, (error, createdAuthor) => {
@@ -48,6 +53,16 @@ router.post('/', (req, res) => {
 		}
 	});
 });
+
+// Destroy author
+router.delete('/:id', (req, res) => {
+res.send('delete author' + req.params.id)})
+
+// Edit author
+router.get('/:id/edit', (req, res) => {
+  res.send('edit author' + req.params.id)
+  })
+})
 
 // UPDATE
 router.put('/:id', (req, res) => {
