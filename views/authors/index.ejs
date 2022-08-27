@@ -9,8 +9,9 @@
   </body>
     <ul>
       <% for(let i = 0; i < authors.length; i++) { %>
+        <div> <%= authors[i].name %> </div>
         <li>
-          <a href="/authors/<%= authors[i].id %>"> <%= authors[i].name %> </a>
+          <a href="/authors/<%= authors[i].id %>"> View </a>
         </li>
     <% } %>
     </ul>

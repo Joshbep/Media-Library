@@ -61,7 +61,6 @@ res.send('delete author' + req.params.id)})
 // Edit author
 router.get('/:id/edit', (req, res) => {
   res.send('edit author' + req.params.id)
-  })
 })
 
 // UPDATE
