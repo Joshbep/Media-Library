@@ -1,14 +1,24 @@
 const express = require('express');
 const router = express.Router()
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
 const Book = require('../models/books.js')
 const Author = require('../models/author.js')
+const uploadPath = path.join('public', Book.coverImageBasePath)
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const upload = multer({
+  dest: uploadPath,
+  fileFilter: (req, file, callback) => {
+    callback(null, )
+  }
+})
 
 //pulling all books
 router.get('/', async (req, res) => {
   let query = Book.find()
-  if(req.query.title != null && req.query.title != ''){
-    query = query.regex('title', new ReqExp(req.query.title, 'i'))
+  if (req.query.title != null && req.query.title != '') {
+    query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
   if(req.query.publishedAfter != null && req.query.publishedAfter != ''){
     query = query.gte('publishDate', req.query.publishedAfter)
@@ -30,7 +40,8 @@ router.get('/new', async (req, res) => {
 })
 
 //creating book
-router.post('/', (req, res) => {
+router.post('/', upload.single('cover'), (req, res) => {
+  const fileName = req.file != null ? req.file.filename : null
   Book.create(req.body, (error, createdBook) => {
 		if (error) {
 			console.log('error', error);

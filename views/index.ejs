@@ -2,7 +2,7 @@
     <h2>Recently Added</h2>
     <% for(let i = 0; i < books.length; i++) { %>
         <a href="/books/<%= books[i].id %>"> <%= books[i].name %>
-          <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+          <img class="book-cover" src="<%= books.coverImagePath %>">
         </a>
   <% } %>
   </body>

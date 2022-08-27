@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>The Home of Stories</title>
-  </head>
-  <body>
-    <header>
-        <a href="/">The Home of Stories</a>
-        <a href="/authors">Authors</a>
-        <a href="/authors/new">Add Author</a>
-    </header>
+<%- include('../partials/header.ejs') %>
     <h2>Search Authors</h2>
     <form action="/authors" method="GET">
       <label for="name">Name</label>

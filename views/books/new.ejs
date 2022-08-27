@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<%- include('../partials/header.ejs') %>
     <h2>New Book</h2>
     <form method="POST" action="/books" enctype='multipart/form-data'>
       <fieldset>
@@ -37,7 +31,7 @@
 
       <fieldset>
         <label for="cover">cover:</label>
-        <input id="cover" type="file" name="cover">
+        <input id="cover" type="file" name="cover" class="filepond">
       </fieldset>
 
       <fieldset>

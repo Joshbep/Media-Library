@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>The Home of Stories</title>
-  </head>
-  <body>
-    <header>
-        <a href="/">The Home of Stories</a>
-        <a href="/books">books</a>
-        <a href="/books/new">Add Book</a>
-    </header>
+<%- include('../partials/header.ejs') %>
     <h2>Search Books</h2>
     <form action="/books" method="GET">
       <label for="title">Title</label>
@@ -26,7 +15,7 @@
       <% for(let i = 0; i < books.length; i++) { %>
         <li>
           <a href="/books/<%= books[i].id %>"> <%= books[i].name %>
-            <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+            <img class="book-cover" src="<%= books.coverImagePath %>">
           </a>
         </li>
     <% } %>
