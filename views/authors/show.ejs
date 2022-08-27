@@ -2,15 +2,11 @@
   <h2><%= author.name %> </h2>
   <a href="/authors/<%= author.id %>/edit">Edit</a>
  <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}`}) %>
- <% if(booksByAuthor.length > 0) { %>
-   <h2>Books By Author</h2>
-   <% for(let i = 0; i < booksByAuthor.length; i++) { %>
-     <li>
-       <a href="/books/ <%= books[i].id %>"> <%= books[i].name %>
-         <img class="book-cover" src="<%= book.coverImagePath %>">
-       </a>
-     </li>
- <% } %>
-  <%}%>
+ <h2>Books By Author</h2>
+ <% booksByAuthor.forEach(book => { %>
+     <a href="/books/<%= book.id %>">
+       <img src="<%= book.coverImagePath %>">
+     </a>
+ <% }) %>
   </body>
 </html>

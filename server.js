@@ -34,7 +34,7 @@ mongoose.connection.once('open', () => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
 app.use('/', indexController)
