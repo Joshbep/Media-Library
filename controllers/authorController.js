@@ -37,10 +37,6 @@ router.get('/new', (req, res) => {
   res.render('authors/new.ejs')
 })
 
-// show route for author
-router.get('/:id', (req, res) => {
-  res.send('id of author' + req.params.id)
-})
 
 //creating authors
 router.post('/', (req, res) => {
@@ -54,19 +50,35 @@ router.post('/', (req, res) => {
 	});
 });
 
+// show route for author
+router.get('/:id', async (req, res) => {
+  const author = await Author.findById(req.params.id);
+  const books = await Book.find({ author: author.id }).limit(8).exec()
+	res.render('authors/show.ejs', {
+		author: author,
+    booksByAuthor: books
+	});
+})
+
 // Destroy author
 router.delete('/:id', (req, res) => {
-res.send('delete author' + req.params.id)})
+  Author.findByIdAndRemove(req.params.id, (err, data) => {
+    if(err) console.log(err)
+    res.redirect('/authors')
+  })
+})
 
 // Edit author
 router.get('/:id/edit', (req, res) => {
-  res.send('edit author' + req.params.id)
+  Author.findById(req.params.id, (err, foundAuthor) => {
+    res.render('authors/edit.ejs', {author: foundAuthor})
+  })
 })
 
 // UPDATE
 router.put('/:id', (req, res) => {
   Author.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateAuthor) => {
-    res.redirect('/authors')
+    res.redirect(`/authors/${Author.id}`)
   })
 })
 

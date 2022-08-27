@@ -13,6 +13,10 @@
         <li>
           <a href="/authors/<%= authors[i].id %>"> View </a>
         </li>
+        <li>
+          <a href="/authors/<%= authors[i].id %>/edit"> Edit </a>
+        </li>
+        <%- include('../partials/deleteForm.ejs', {url: `/authors/${authors[i].id}`}) %>
     <% } %>
     </ul>
   </body>

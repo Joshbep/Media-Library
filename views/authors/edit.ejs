@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+    <h2>Edit Author</h2>
+    <form method="POST" action="/authors/<%= author.id %>?_method=PUT">
+      <fieldset>
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name" value=" <%= author.name %> ">
+      </fieldset>
+      <a href="/authors/ <%= author.id %> ">Cancel</a>
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>

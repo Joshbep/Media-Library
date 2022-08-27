@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+  <h2><%= author.name %> </h2>
+  <a href="/authors/<%= author.id %>">Edit</a>
+ <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}`}) %>
+ <% if(booksByAuthor.length > 0) { %>
+   <h2>Books By Author</h2>
+   <% for(let i = 0; i < booksByAuthor.length; i++) { %>
+     <li>
+       <a href="/books/<%= books[i].id %>"> <%= books[i].name %>
+         <img class="book-cover" src="<%= books.coverImagePath %>">
+       </a>
+     </li>
+ <% } %>
+  <%}%>
+  </body>
+</html>
