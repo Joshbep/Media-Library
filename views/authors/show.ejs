@@ -6,8 +6,8 @@
    <h2>Books By Author</h2>
    <% for(let i = 0; i < booksByAuthor.length; i++) { %>
      <li>
-       <a href="/books/<%= books[i].id %>"> <%= books[i].name %>
-         <img class="book-cover" src="<%= books.coverImagePath %>">
+       <a href="/books/ <%= books[i].id %>"> <%= books[i].name %>
+         <img class="book-cover" src="<%= book.coverImagePath %>">
        </a>
      </li>
  <% } %>
