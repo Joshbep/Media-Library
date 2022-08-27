@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
   <h2><%= author.name %> </h2>
-  <a href="/authors/<%= author.id %>">Edit</a>
+  <a href="/authors/<%= author.id %>/edit">Edit</a>
  <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}`}) %>
  <% if(booksByAuthor.length > 0) { %>
    <h2>Books By Author</h2>
