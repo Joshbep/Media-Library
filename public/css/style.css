@@ -34,6 +34,8 @@ body {
 
  a {
    color: white;
+   list-style: none;
+   text-decoration: none;
  }
 
 .inner-container {
@@ -82,11 +84,13 @@ body {
 }
 
 .page-header {
+  color: white;
   font-size: 2rem;
   font-weight: 500;
 }
 
 .btn {
+  margin-top: 1rem;
   border: 1px solid black;
   border-radius: .5rem;
   padding: .5rem 1rem;
@@ -96,12 +100,30 @@ body {
   text-align: center;
 }
 
-a {
-  list-style: none;
-  text-decoration: none;
+.btn-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.btn-row > * {
+  margin-left: 1rem;
+}
+
+.btn-row >:first-child {
+  margin-left: 0;
 }
 
 .btn-primary {
   color: white;
   background-color: red;
+}
+
+.btn-primary:hover {
+  color: black;
+  background-color: white;
+}
+
+.btn-delete:hover {
+  color: white;
+  background-color: black;
 }
