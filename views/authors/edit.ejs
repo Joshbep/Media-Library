@@ -1,5 +1,7 @@
 <%- include('../partials/header.ejs') %>
-    <h2>Edit Author</h2>
+<%- include('../partials/nav.ejs') %>
+  <div class="inner-container">
+    <h2 class="page-header">Edit Author</h2>
     <form method="POST" action="/authors/<%= author.id %>?_method=PUT">
       <fieldset>
         <label for="name">Name:</label>
@@ -8,5 +10,6 @@
       <a href="/authors/ <%= author.id %> ">Cancel</a>
       <button type="submit">Update</button>
     </form>
+  </div>
   </body>
 </html>

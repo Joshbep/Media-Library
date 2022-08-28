@@ -81,7 +81,7 @@ router.get('/:id/edit', (req, res) => {
 
 // UPDATE
 router.put('/:id', (req, res) => {
-  Author.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateAuthor) => {
+  Author.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateModel) => {
     res.redirect('/authors')
   })
 })

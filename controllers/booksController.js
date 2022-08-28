@@ -63,10 +63,9 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit book
-router.get('/:id/edit', (req, res) => {
-  Book.findById(req.params.id, (err, foundBook) => {
-		res.render('books/edit.ejs', {book: foundBook})
-	})
+router.get('/:id/edit', async (req, res) => {
+    const book = await Book.findById(req.params.id)
+    renderEditPage(res, book)
 })
 
 // UPDATE
@@ -86,9 +85,23 @@ async function renderEditPage(res, book, hasError = false) {
 }
 
 async function renderFormPage(res, book, form, hasError = false) {
-  const authors = await Author.find({})
-  const params = { authors: authors, book: book}
-  res.render(`books/${form}`, params)
+  try {
+    const authors = await Author.find({})
+    const params = {
+      authors: authors,
+      book: book
+    }
+    if (hasError) {
+      if (form === 'edit') {
+        params.errorMessage = 'Error Updating Book'
+      } else {
+        params.errorMessage = 'Error Creating Book'
+      }
+    }
+    res.render(`books/${form}`, params)
+  } catch {
+    res.redirect('/books')
+  }
 }
 
 function saveCover(book, coverEncoded) {

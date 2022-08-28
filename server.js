@@ -25,7 +25,7 @@ const authorController = require('./controllers/authorController.js')
 const mongoose = require('mongoose')
 const mongoURI = process.env.MONGODB_URI
 
-mongoose.connect(mongoURI);
+mongoose.connect(mongoURI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
   console.log('connected to mongo')
 })
@@ -34,7 +34,7 @@ mongoose.connection.once('open', () => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 app.use(methodOverride('_method'))
 
 app.use('/', indexController)
