@@ -1,0 +1,14 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+  <div class="inner-container">
+    <h2 class="page-header">New Movie</h2>
+    <form method="POST" action="/movies">
+      <%- include('_form_fields') %>
+      <div class="form-row form-row-end btn-row">
+        <a class="btn btn-delete" href="/movies">Cancel</a>
+        <button class="btn btn-primary" type="submit">Add Movie</button>
+      </div>
+  </form>
+    </div>
+  </body>
+</html>

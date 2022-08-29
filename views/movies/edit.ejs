@@ -1,11 +1,11 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/nav.ejs') %>
   <div class="inner-container">
-    <h2 class="page-header">Edit Book</h2>
-    <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+    <h2 class="page-header">Edit Movie</h2>
+    <form action="/movies/<%= movie.id %>?_method=PUT" method="POST">
       <%- include('_form_fields') %>
       <div class="form-row form-row-end btn-row">
-        <a class="btn btn-delete" href="/books">Cancel</a>
+        <a class="btn btn-delete" href="/movies">Cancel</a>
         <button class="btn btn-primary" type="submit">Edit</button>
       </div>
     </form>

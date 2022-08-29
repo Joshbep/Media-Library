@@ -1,7 +1,7 @@
 <div class="form-row">
   <div class="form-item">
     <label for="title">Title:</label>
-    <input id="title" type="text" name="title" placeholder="Enter new book name">
+    <input id="title" type="text" name="title" placeholder="Enter new book name" value="<%= book.title %>">
   </div>
   <div class="form-item">
     <label for="author">Author</label>
@@ -19,21 +19,21 @@
 <div class="form-row">
   <div class="form-item">
     <label for="publishDate">Publish Date:</label>
-    <input id="publishDate" type="date" name="publishDate" value=" <%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
+    <input id="publishDate" type="date" name="publishDate" value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
   </div>
   <div class="form-item">
     <label for="pageCount">Page Count:</label>
-    <input id="pageCount" type="number" min="1" name="pageCount" placeholder="Enter page count" value=" <%= book.pageCount %>">
+    <input id="pageCount" type="number" min="1" name="pageCount" placeholder="Enter page count" value="<%= book.pageCount %>">
   </div>
 </div>
 
 <div class="form-row">
   <div class="form-item form-item-no-grow">
     <label for="cover">cover:</label>
-    <input id="cover" type="file" name="cover" class="book-cover-file filepond">
+    <input id="cover" type="file" name="cover" class="book-cover-file filepond" value="<%= book.coverImage %>">
   </div>
   <div class="form-item">
     <label for="description">Description:</label>
-    <textarea id="description" type="text" name="description" placeholder="Enter description" value=" <%= book.description %>"></textarea>
+    <textarea name="description"><%= book.description %></textarea>
   </div>
 </div>

@@ -29,6 +29,12 @@ router.get('/new', async (req, res) => {
   renderNewPage(res, Book.create())
 })
 
+// show route for books
+router.get('/:id', async (req, res) => {
+  const book = await Book.findById(req.params.id).populate('author').exec()
+  res.render('books/show.ejs', {book: book})
+})
+
 //creating book
 router.post('/', async (req, res) => {
   const book = new Book({
@@ -48,12 +54,6 @@ router.post('/', async (req, res) => {
   }
 })
 
-// show route for books
-router.get('/:id', async (req, res) => {
-  const book = await Book.findById(req.params.id).populate('author').exec()
-  res.render('books/show.ejs', {book: book})
-})
-
 // DESTROY Book
 router.delete('/:id', (req, res) => {
 	Book.findByIdAndRemove(req.params.id, (err, data)=> {
@@ -63,25 +63,28 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit book
-router.get('/:id/edit', async (req, res) => {
-    const book = await Book.findById(req.params.id)
-    renderEditPage(res, book)
+router.get('/:id/edit', (req, res) => {
+    Book.findById(req.params.id, async (err, book) => {
+      const authors = await Author.find({})
+      if(err) {
+        console.log(err)
+        res.redirect('/books')
+      } else {
+      res.render('books/edit.ejs', {book: book, authors: authors})
+      }
+    })
 })
 
 // UPDATE
 router.put('/:id', (req, res) => {
   Book.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
-		res.redirect(`/books${book.id}`)
+		res.redirect('/books')
 	})
 })
 
 
 async function renderNewPage(res, book, hasError = false) {
   renderFormPage(res, book, 'new', hasError)
-}
-
-async function renderEditPage(res, book, hasError = false) {
-  renderFormPage(res, book, 'edit', hasError)
 }
 
 async function renderFormPage(res, book, form, hasError = false) {

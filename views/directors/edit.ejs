@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+  <div class="inner-container">
+    <h2 class="page-header">Edit Director</h2>
+    <form method="POST" action="/directors/<%= director.id %>?_method=PUT">
+      <div class="form-row">
+        <div class="form-item">
+          <label for="name">Name:</label>
+          <input id="name" type="text" name="name" value="<%= director.name %>">
+        </div>
+      </div>
+      <div class="form-row form-row-end btn-row">
+        <a class="btn btn-delete" href="/directors/ <%= director.id %> ">Cancel</a>
+        <button class="btn btn-primary" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+  </body>
+</html>

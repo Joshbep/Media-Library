@@ -1,0 +1,39 @@
+<div class="form-row">
+  <div class="form-item">
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title" placeholder="Enter new movie name" value="<%= movie.title %>">
+  </div>
+  <div class="form-item">
+    <label for="director">Director</label>
+    <select name="director">
+    <% directors.forEach(director => { %>
+      <% if (director.id === movie.author) { %>
+      <option selected label="<%= director.name %>" value="<%= director.id %>">
+    <% } else { %>
+      <option label="<%= director.name %>" value="<%= director.id %>">
+    <% } %>
+    <% }) %>
+    </select>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-item">
+    <label for="releaseDate">Release Date:</label>
+    <input id="releaseDate" type="date" name="releaseDate" value="<%= movie.releaseDate == null ? '' : movie.releaseDate.toISOString().split('T')[0] %>">
+  </div>
+  <div class="form-item">
+    <label for="movieLength">Movie Length:</label>
+    <input id="movieLength" type="number" min="1" name="movieLength" placeholder="Enter movie length in minutes" value="<%= movie.movieLength %>">
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-item form-item-no-grow">
+    <label for="cover">cover:</label>
+    <input id="cover" type="file" name="cover" class="book-cover-file filepond" value="<%= movie.coverImage %>">
+  </div>
+  <div class="form-item">
+    <label for="description">Description:</label>
+    <textarea name="description"><%= movie.description %></textarea>
+  </div>
+</div>

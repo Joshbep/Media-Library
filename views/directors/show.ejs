@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/nav.ejs') %>
+    <div class="inner-container">
+      <h2 class="page-header"><%= director.name %> </h2>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/directors/<%= director.id %>/edit">Edit</a>
+        <%- include('../partials/deleteForm.ejs', { url: `/directors/${director.id}`}) %>
+      </div>
+        <h2 class="page-header">Movies By Director</h2>
+        <%- include('../partials/movieGrid', { movies: moviesBydirector }) %>
+    </div>
+  </body>
+</html>
