@@ -4,9 +4,11 @@
     <h2 class="page-header">New Book</h2>
     <form method="POST" action="/books">
       <%- include('_form_fields') %>
-      <a href="/books">Cancel</a>
-      <button type="submit">Add Book</button>
-    </form>
+      <div class="form-row form-row-end btn-row">
+        <a class="btn btn-delete" href="/books">Cancel</a>
+        <button class="btn btn-primary" type="submit">Add Book</button>
+      </div>
+  </form>
     </div>
   </body>
 </html>

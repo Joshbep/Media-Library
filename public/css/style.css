@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  color: #323336;
+  color: white;
   letter-spacing: 2px;
 }
 
@@ -103,6 +103,7 @@ body {
 .btn-row {
   display: flex;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
 .btn-row > * {
@@ -117,6 +118,10 @@ body {
   color: white;
   background-color: red;
 }
+.btn-delete {
+  color: black;
+  background-color: white;
+}
 
 .btn-primary:hover {
   color: black;
@@ -126,4 +131,68 @@ body {
 .btn-delete:hover {
   color: white;
   background-color: black;
+}
+
+.form-row {
+  color: white;
+  display: flex;
+  margin-bottom: .5rem;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.form-item:first-child {
+  margin-left: 0;
+}
+
+.form-item-no-grow {
+  flex-grow: 0;
+}
+
+.form-row-end {
+  justify-content: flex-end;
+}
+
+.form-item > label {
+  font-size: 1.2rem;
+  margin-bottom: .25rem;
+  margin-left: .25rem;
+}
+
+.form-item input, .form-item select, .form-item textarea {
+  height: 2rem;
+  padding: .25rem .5rem;
+  border-radius: .25rem;
+  border: 1px solid black;
+  color: #757575;
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: 'Merriweather', serif;
+  outline: none;
+}
+
+.form-item textarea {
+  height: 100%;
+  resize: none;
+}
+
+
+.filepond--root {
+  font-family: 'Merriweather', serif;
+  margin-bottom: 0;
+}
+
+.filepond--panel-root {
+  border: 1px solid black;
+}
+
+.filepond--drop-label {
+  color: #757575;
+  font-size: inherit;
 }
