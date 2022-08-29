@@ -1,17 +1,13 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/nav.ejs') %>
-  <div class="inner-container">
-  <h2 class="page-header"><%= author.name %> </h2>
-  <div class="btn-row">
-    <a class="btn btn-primary" href="/authors/<%= author.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}`}) %>
- </div>
- <h2 class="page-header">Books By Author</h2>
- <% booksByAuthor.forEach(book => { %>
-     <a href="/books/<%= book.id %>">
-       <img src="<%= book.coverImagePath %>">
-     </a>
- <% }) %>
-  </div>
+    <div class="inner-container">
+      <h2 class="page-header"><%= author.name %> </h2>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/authors/<%= author.id %>/edit">Edit</a>
+        <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}`}) %>
+      </div>
+        <h2 class="page-header">Books By Author</h2>
+        <%- include('../partials/bookGrid', { books: booksByAuthor }) %>
+    </div>
   </body>
 </html>
