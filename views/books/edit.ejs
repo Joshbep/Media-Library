@@ -4,8 +4,10 @@
     <h2 class="page-header">New Book</h2>
     <form method="POST" action="/books/<%= book.id %>?_method=PUT">
       <%- include('_form_fields') %>
-      <a href="/books">Cancel</a>
-      <button type="submit">Edit</button>
+      <div class="form-row form-row-end btn-row">
+        <a class="btn btn-delete" href="/books">Cancel</a>
+        <button class="btn btn-primary" type="submit">Edit</button>
+      </div>
     </form>
     </div>
   </body>
