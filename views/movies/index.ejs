@@ -12,11 +12,11 @@
       <div class="form-row">
         <div class="form-item">
           <label for="releasedAfter">Released After</label>
-          <input type="date" name="releasedAfter" value="<%=searchOptions.releasedAfter%>">
+          <input type="date" name="releasedAfter" value="<%= searchOptions.releasedAfter %>">
         </div>
         <div class="form-item">
           <label for="releasedBefore">Released Before</label>
-          <input type="date" name="releasedBefore" value="<%=searchOptions.releasedBefore%>">
+          <input type="date" name="releasedBefore" value="<%= searchOptions.releasedBefore %>">
         </div>
       </div>
       <div class="form-row form-row-end">
@@ -24,7 +24,7 @@
       </div>
     </form>
     <br>
-    <%- include('../partials/movieGrid', { movies: movie }) %>
+    <%- include('../partials/movieGrid', { movies: movies }) %>
     </div>
   </body>
 </html>

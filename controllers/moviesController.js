@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const Movie = require('../models/books.js')
+const Movie = require('../models/movies.js')
 const Director = require('../models/director.js')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
@@ -10,8 +10,8 @@ router.get('/', async (req, res) => {
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
   }
-  if(req.query.releasedAfter != null && req.query.releaseAfter != ''){
-    query = query.gte('releaseDate', req.query.releaseAfter)
+  if(req.query.releasedAfter != null && req.query.releasedAfter != ''){
+    query = query.gte('releaseDate', req.query.releasedAfter)
   }
   if(req.query.releasedBefore != null && req.query.releasedBefore != ''){
     query = query.lte('releaseDate', req.query.releasedBefore)

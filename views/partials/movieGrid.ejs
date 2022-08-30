@@ -1,9 +1,9 @@
-<% bookCoverClass = locals.large ? 'book-cover-large' : '' %>
-<% bookGridClass = locals.large ? 'book-grid-large' : '' %>
-<div class="book-grid <%= bookGridClass %>">
+<% movieCoverClass = locals.large ? '-cover-large' : '' %>
+<% movieGridClass = locals.large ? 'book-grid-large' : '' %>
+<div class="book-grid <%= movieGridClass %>">
   <% movies.forEach(movie => { %>
     <a href="/movies/<%= movie.id %>">
-      <img class="book-cover <%= bookCoverClass %>" src="<%= movie.coverImagePath %>">
+      <img class="book-cover <%= movieCoverClass %>" src="<%= movie.coverImagePath %>">
     </a>
   <% }) %>
 </div>

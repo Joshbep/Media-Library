@@ -1,14 +1,14 @@
 <%- include('../partials/header.ejs') %>
 <%- include('../partials/nav.ejs') %>
     <div class="inner-container">
-      <h2 class="page-header"> <%= movie.title %> </h2>
+      <h2 class="page-header"><%= movie.title %></h2>
       <div class="book-details">
         <div>
-          <img class="book-cover" src=" <%= movie.coverImagePath %> ">
+          <img class="book-cover" src="<%= movie.coverImagePath %>">
           <div class="book-details-btn-grid">
             <a class="btn btn-primary" href="/movies/<%= movie.id %>/edit">Edit</a>
             <%- include('../partials/deleteForm.ejs', { url: `/movies/${movie.id}`}) %>
-            <a class="btn btn-primary book-details-author-button" href="/movies/<%= movie.director.id %>">View Director</a>
+            <a class="btn btn-primary book-details-author-button" href="/directors/<%= movie.director.id %>">View Director</a>
           </div>
         </div>
         <div class="book-details-grid">

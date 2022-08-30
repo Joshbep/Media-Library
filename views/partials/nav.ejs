@@ -1,15 +1,35 @@
 <nav class="header-nav">
   <a class="header-title" href="/">The Home of Stories</a>
-  <div>
+  <div class="inner-nav">
   <ul>
-    <li><a href="/authors">Authors</a></li>
-    <li><a href="/authors/new">Add Author</a></li>
-    <li><a href="/books">Books</a></li>
-    <li><a href="/books/new">Add Book</a></li>
-    <li><a href="/directors">Directors</a></li>
-    <li><a href="/directors/new">Add Director</a></li>
-    <li><a href="/movies">Movies</a></li>
-    <li><a href="/movies/new">Add Movie</a></li>
+    <div class="dropdown">
+      <p>Books Library</p>
+      <div class="dropdown-content">
+      <li><a href="/books">Books</a></li>
+      <li><a href="/books/new">Add Book</a></li>
+      </div>
+    </div>
+    <div class="dropdown">
+      <p>Authors</p>
+      <div class="dropdown-content">
+        <li><a href="/authors">Authors</a></li>
+        <li><a href="/authors/new">Add Author</a></li>
+      </div>
+    </div>
+    <div class="dropdown directors-dropdown">
+      <p>Directors</p>
+      <div class="dropdown-content">
+        <li><a href="/directors">Directors</a></li>
+        <li><a href="/directors/new">Add Director</a></li>
+      </div>
+    </div>
+    <div class="dropdown">
+      <p>Movies Library</p>
+      <div class="dropdown-content">
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/movies/new">Add Movie</a></li>
+      </div>
+    </div>
   </ul>
   </div>
 </nav>
