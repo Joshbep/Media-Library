@@ -1,8 +1,12 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/nav.ejs') %>
   <div class="inner-container">
-    <h2 class="page-header">Recently Added</h2>
+    <h2 class="page-header">Recently Added Books</h2>
       <%- include('./partials/bookGrid', { books: books }) %>
+  </div>
+  <div class="inner-container inner-movie">
+    <h2 class="page-header">Recently Added Movies</h2>
+      <%- include('./partials/movieGrid', { movies: movies }) %>
   </div>
   </body>
 </html>
