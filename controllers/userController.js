@@ -5,7 +5,7 @@ const User = require('../models/users.js')
 
 const router = express.Router()
 
-router.get('/user', (req, res) => {
+router.get('/', (req, res) => {
   res.render('users/user.ejs')
 })
 

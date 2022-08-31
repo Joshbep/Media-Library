@@ -21,25 +21,20 @@
     <title class="header-title">The Home of Stories</title>
   </head>
   <body>
-    <nav class="header-nav">
-      <h1 class="header-title">The Home of Stories</h1>
-      <div class="inner-nav">
+    <img class="bg-image" src="https://i.pinimg.com/originals/c8/b0/7e/c8b07e380215edaaa1903769586a61dc.jpg" alt="">
+    <nav class="header-nav1">
+      <h1 class="header-title1">The Home of Stories</h1>
       <ul>
-        <li><a href="/users/signin">Signin</a></li>
+      <li><a class="btn btn-primary" href="/users">Back</a></li>
       </ul>
-      </div>
     </nav>
-    <h1>Sign In</h1>
-    <form action="/users/signin" method="POST">
-      <fieldset>
-        <label for="username">Username:</label>
-        <input type="text" name="username">
-      </fieldset>
-      <fieldset>
-        <label for="password">Password:</label>
-        <input type="password" name="password">
-      </fieldset>
-      <input type="submit" value="Sign In">
+    <form class="register-form" action="/users/signin" method="POST">
+      <h2 class="h2-register">Sign In</h2>
+      <input class="username" type="text" name="username" placeholder="Username">
+      <br>
+      <input class="password" type="password" name="password" placeholder="Password">
+      <br>
+      <input class="btn btn-primary" type="submit" value="Sign In">
     </form>
   </body>
 </html>
