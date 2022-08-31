@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router()
 const Author = require('../models/author.js')
 const Book = require('../models/books.js')
-//pulling all authors
 
+//pulling all authors
 router.get('/', async (req, res) => {
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== '') {

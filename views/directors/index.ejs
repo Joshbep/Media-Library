@@ -19,8 +19,8 @@
     <div class="author-name"><%= director.name %></div>
     <div class="btn-row">
       <a class="btn btn-primary" href="/directors/<%= director.id %>">View</a>
-      <a class="btn btn-primary" href="/authors/<%= director.id %>/edit">Edit</a>
-      <%- include('../partials/deleteForm', { url: `/directors/${director.id}` }) %>
+      <a class="btn btn-primary" href="/directors/<%= director.id %>/edit">Edit</a>
+      <a class="btn btn-primary btn-delete" href="/movies/new">Add Movie</a>
     </div>
   </div>
 <% }) %>

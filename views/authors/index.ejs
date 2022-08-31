@@ -43,7 +43,7 @@
     <div class="btn-row">
       <a class="btn btn-primary" href="/authors/<%= author.id %>">View</a>
       <a class="btn btn-primary" href="/authors/<%= author.id %>/edit">Edit</a>
-      <%- include('../partials/deleteForm', { url: `/authors/${author.id}` }) %>
+      <a class="btn btn-primary btn-delete" href="/books/new">Add Book</a>
     </div>
   </div>
 <% }) %>

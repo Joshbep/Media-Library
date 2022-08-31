@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router()
 const Director = require('../models/director.js')
 const Movie = require('../models/movies.js')
-//pulling all authors
 
+//pulling all directors
 router.get('/', async (req, res) => {
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== '') {
@@ -32,13 +32,13 @@ router.get('/', async (req, res) => {
 // 	);
 // });
 
-// new author route
+// new director route
 router.get('/new', (req, res) => {
   res.render('directors/new.ejs')
 })
 
 
-//creating authors
+//creating director
 router.post('/', (req, res) => {
 	Director.create(req.body, (error, createdDirector) => {
 		if (error) {
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 	});
 });
 
-// show route for author
+// show route for director
 router.get('/:id', async (req, res) => {
   const director = await Director.findById(req.params.id)
   const movies = await Movie.find({ director: director.id }).limit(10).exec()
@@ -60,7 +60,7 @@ router.get('/:id', async (req, res) => {
 	});
 })
 
-// Destroy author
+// Destroy director
 router.delete('/:id', (req, res) => {
   Director.findByIdAndRemove(req.params.id, (err, data) => {
     if(err) console.log(err)
@@ -68,7 +68,7 @@ router.delete('/:id', (req, res) => {
   })
 })
 
-// Edit author
+// Edit director
 router.get('/:id/edit', (req, res) => {
   Director.findById(req.params.id, (err, foundDirector) => {
     if(err) {
@@ -79,7 +79,7 @@ router.get('/:id/edit', (req, res) => {
   })
 })
 
-// UPDATE
+// UPDATE director
 router.put('/:id', (req, res) => {
   Director.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateModel) => {
     res.redirect('/directors')

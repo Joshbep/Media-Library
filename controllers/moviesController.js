@@ -4,7 +4,7 @@ const Movie = require('../models/movies.js')
 const Director = require('../models/director.js')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
-//pulling all books
+//pulling all movies
 router.get('/', async (req, res) => {
   let query = Movie.find()
   if (req.query.title != null && req.query.title != '') {
@@ -24,18 +24,18 @@ router.get('/', async (req, res) => {
 })
 
 
-// new book route
+// new movie route
 router.get('/new', async (req, res) => {
   renderNewPage(res, Movie.create())
 })
 
-// show route for books
+// show route for movies
 router.get('/:id', async (req, res) => {
   const movie = await Movie.findById(req.params.id).populate('director').exec()
   res.render('movies/show.ejs', {movie: movie})
 })
 
-//creating book
+//creating movie
 router.post('/', async (req, res) => {
   const movie = new Movie({
     title: req.body.title,
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-// DESTROY Book
+// DESTROY movie
 router.delete('/:id', (req, res) => {
 	Movie.findByIdAndRemove(req.params.id, (err, data)=> {
 		if(err) console.log(err)
@@ -62,7 +62,7 @@ router.delete('/:id', (req, res) => {
 	})
 })
 
-// Edit book
+// Edit movie
 router.get('/:id/edit', (req, res) => {
     Movie.findById(req.params.id, async (err, movie) => {
       const directors = await Director.find({})
@@ -75,7 +75,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-// UPDATE
+// UPDATE movie
 router.put('/:id', (req, res) => {
   Movie.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
 		res.redirect('/movies')
