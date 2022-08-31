@@ -3,8 +3,16 @@ const router = express.Router()
 const Director = require('../models/director.js')
 const Movie = require('../models/movies.js')
 
+const authRequired = (req,res,next) =>{
+    if(req.session.currentUser){
+        next()
+    }else{
+        res.redirect('/users/signin')
+    }
+}
+
 //pulling all directors
-router.get('/', async (req, res) => {
+router.get('/', authRequired, async (req, res) => {
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== '') {
     searchOptions.name = new RegExp(req.query.name, 'i')
@@ -33,7 +41,7 @@ router.get('/', async (req, res) => {
 // });
 
 // new director route
-router.get('/new', (req, res) => {
+router.get('/new', authRequired, (req, res) => {
   res.render('directors/new.ejs')
 })
 
@@ -61,7 +69,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // Destroy director
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
   Director.findByIdAndRemove(req.params.id, (err, data) => {
     if(err) console.log(err)
     res.redirect('/directors')
@@ -69,7 +77,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit director
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authRequired, (req, res) => {
   Director.findById(req.params.id, (err, foundDirector) => {
     if(err) {
       res.redirect('/directors')

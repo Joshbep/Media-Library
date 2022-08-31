@@ -328,6 +328,18 @@ body {
   z-index: 2;
 }
 
+.dropdown1 {
+  /* display: inline-block;
+  position: relative; */
+  margin: 10px 10px 10px 0px;
+  padding-top: 20px;
+}
+
+.dropdown-content1 {
+
+    width: auto;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;

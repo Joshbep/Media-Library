@@ -3,8 +3,16 @@ const router = express.Router()
 const Author = require('../models/author.js')
 const Book = require('../models/books.js')
 
+const authRequired = (req,res,next) =>{
+    if(req.session.currentUser){
+        next()
+    }else{
+        res.redirect('/users/signin')
+    }
+}
+
 //pulling all authors
-router.get('/', async (req, res) => {
+router.get('/', authRequired, async (req, res) => {
   let searchOptions = {}
   if (req.query.name != null && req.query.name !== '') {
     searchOptions.name = new RegExp(req.query.name, 'i')
@@ -33,7 +41,7 @@ router.get('/', async (req, res) => {
 // });
 
 // new author route
-router.get('/new', (req, res) => {
+router.get('/new', authRequired, (req, res) => {
   res.render('authors/new.ejs')
 })
 
@@ -61,7 +69,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // Destroy author
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
   Author.findByIdAndRemove(req.params.id, (err, data) => {
     if(err) console.log(err)
     res.redirect('/authors')
@@ -69,7 +77,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit author
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authRequired, (req, res) => {
   Author.findById(req.params.id, (err, foundAuthor) => {
     if(err) {
       res.redirect('/authors')

@@ -4,8 +4,16 @@ const Book = require('../models/books.js')
 const Author = require('../models/author.js')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
+const authRequired = (req,res,next) =>{
+    if(req.session.currentUser){
+        next()
+    }else{
+        res.redirect('/users/signin')
+    }
+}
+
 //pulling all books
-router.get('/', async (req, res) => {
+router.get('/', authRequired, async (req, res) => {
   let query = Book.find()
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
@@ -25,7 +33,7 @@ router.get('/', async (req, res) => {
 
 
 // new book route
-router.get('/new', async (req, res) => {
+router.get('/new', authRequired, async (req, res) => {
   renderNewPage(res, Book.create())
 })
 
@@ -55,7 +63,7 @@ router.post('/', async (req, res) => {
 })
 
 // DESTROY Book
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
 	Book.findByIdAndRemove(req.params.id, (err, data)=> {
 		if(err) console.log(err)
 		res.redirect('/books')
@@ -63,7 +71,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit book
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authRequired, (req, res) => {
     Book.findById(req.params.id, async (err, book) => {
       const authors = await Author.find({})
       if(err) {

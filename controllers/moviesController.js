@@ -4,8 +4,16 @@ const Movie = require('../models/movies.js')
 const Director = require('../models/director.js')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
+const authRequired = (req,res,next) =>{
+    if(req.session.currentUser){
+        next()
+    }else{
+        res.redirect('/users/signin')
+    }
+}
+
 //pulling all movies
-router.get('/', async (req, res) => {
+router.get('/', authRequired, async (req, res) => {
   let query = Movie.find()
   if (req.query.title != null && req.query.title != '') {
     query = query.regex('title', new RegExp(req.query.title, 'i'))
@@ -25,7 +33,7 @@ router.get('/', async (req, res) => {
 
 
 // new movie route
-router.get('/new', async (req, res) => {
+router.get('/new', authRequired, async (req, res) => {
   renderNewPage(res, Movie.create())
 })
 
@@ -55,7 +63,7 @@ router.post('/', async (req, res) => {
 })
 
 // DESTROY movie
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
 	Movie.findByIdAndRemove(req.params.id, (err, data)=> {
 		if(err) console.log(err)
 		res.redirect('/movies')
@@ -63,7 +71,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // Edit movie
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authRequired, (req, res) => {
     Movie.findById(req.params.id, async (err, movie) => {
       const directors = await Director.find({})
       if(err) {
