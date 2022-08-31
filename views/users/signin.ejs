@@ -21,3 +21,25 @@
     <title class="header-title">The Home of Stories</title>
   </head>
   <body>
+    <nav class="header-nav">
+      <h1 class="header-title">The Home of Stories</h1>
+      <div class="inner-nav">
+      <ul>
+        <li><a href="/users/signin">Signin</a></li>
+      </ul>
+      </div>
+    </nav>
+    <h1>Sign In</h1>
+    <form action="/users/signin" method="POST">
+      <fieldset>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+      </fieldset>
+      <fieldset>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+      </fieldset>
+      <input type="submit" value="Sign In">
+    </form>
+  </body>
+</html>

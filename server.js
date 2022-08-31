@@ -26,6 +26,7 @@ const booksController = require('./controllers/booksController.js')
 const authorController = require('./controllers/authorController.js')
 const moviesController = require('./controllers/moviesController.js')
 const directorController = require('./controllers/directorController.js')
+const userController = require('./controllers/userController.js')
 
 const mongoose = require('mongoose')
 const mongoURI = process.env.MONGODB_URI
@@ -47,6 +48,7 @@ app.use('/authors', authorController)
 app.use('/books', booksController)
 app.use('/directors', directorController)
 app.use('/movies', moviesController)
+app.use('/users', userController)
 
 app.listen(PORT, () => {
   console.log(`server listening at port ${PORT} ✨`)
