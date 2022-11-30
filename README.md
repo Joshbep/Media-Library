@@ -1,7 +1,10 @@
 > The Home of Stories
+## Deployed app
+https://thehomeofstories.herokuapp.com/users
+
 
 ## Project Description
-A database/library for personal media, such as books, movies, and possibly shows. This is a place to store your favorite books, movies, and shows. Now when someone asks you for a recommendation you have it all in one place. 
+A database/library for personal media, such as books, movies, and possibly shows. This is a place to store your favorite books, movies, and shows. Now when someone asks you for a recommendation you have it all in one place.
 > Models including field names and their datatypes<br />
 I am assuming I will have to have multiple models. One for the author or director. One for the books, one for the movies, and one for the shows. <br />
 
