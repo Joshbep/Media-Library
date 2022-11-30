@@ -1,3 +1,4 @@
+//https://mongoosejs.com/docs/tutorials/virtuals.html
 const mongoose = require('mongoose')
 
 const bookSchema = new mongoose.Schema({
